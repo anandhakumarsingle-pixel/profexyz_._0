@@ -48,6 +48,7 @@ players.forEach((player, index) => {
         });
     });
 });
+<script src="script.js"></script>
 
 // Show loading message
 window.addEventListener("load", () => {
