@@ -1,13 +1,203 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Profexyz</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Shadow Hub</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0d1117;
+color:white;
+}
+
+header{
+background:#161b22;
+padding:20px;
+text-align:center;
+font-size:30px;
+font-weight:bold;
+}
+
+.search{
+text-align:center;
+margin:20px;
+}
+
+.search input{
+width:80%;
+max-width:500px;
+padding:12px;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:#161b22;
+border-radius:15px;
+overflow:hidden;
+transition:.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card h3{
+padding:10px;
+}
+
+.card p{
+padding:0 10px;
+color:#aaa;
+}
+
+button{
+margin:15px;
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#00d084;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#00b36b;
+}
+
+audio{
+width:90%;
+margin:10px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#161b22;
+margin-top:20px;
+}
+</style>
+
 </head>
 <body>
 
-<center>
-  MR ANANTHAKUMAR
-</center>
+<header>
+🎵 BLACK SHADOW HUB 🎵
+</header>
+
+<div class="search">
+<input type="text" id="search" placeholder="Search Tamil Songs...">
+</div>
+
+<div class="container" id="songs">
+
+<div class="card">
+<img src="https://picsum.photos/400/300?1">
+<h3>Sample Song 1</h3>
+<p>Artist Name</p>
+
+<audio controls>
+<source src="songs/song1.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="playSong(0)">Play</button>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/400/300?2">
+<h3>Sample Song 2</h3>
+<p>Artist Name</p>
+
+<audio controls>
+<source src="songs/song2.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="playSong(1)">Play</button>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/400/300?3">
+<h3>Sample Song 3</h3>
+<p>Artist Name</p>
+
+<audio controls>
+<source src="songs/song3.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="playSong(2)">Play</button>
+</div>
+
+</div>
+
+<footer>
+© 2026 Black Shadow Hub
+</footer>
+
+<script>
+
+const input=document.getElementById("search");
+
+input.addEventListener("keyup",function(){
+
+let filter=input.value.toUpperCase();
+
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+
+let title=card.querySelector("h3").textContent;
+
+if(title.toUpperCase().indexOf(filter)>-1){
+card.style.display="";
+}else{
+card.style.display="none";
+}
+
+});
+
+});
+
+function playSong(index){
+
+let players=document.querySelectorAll("audio");
+
+players.forEach((player,i)=>{
+
+if(i!=index){
+player.pause();
+player.currentTime=0;
+}
+
+});
+
+players[index].play();
+
+}
+
+</script>
 
 </body>
 </html>
